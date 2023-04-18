@@ -1,0 +1,8 @@
+echo enter age
+read age
+if [ $age -gt 18 ]
+then
+echo eligible
+else
+echo not eligible
+fi
