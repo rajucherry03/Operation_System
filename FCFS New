@@ -1,0 +1,60 @@
+#include <stdio.h>
+int i,j;
+int main()
+{
+	int m;
+	float avg1,avg2;
+	printf("Enter the number of processoers :");
+	scanf("%d",&m);
+	int AT[m],BT[m],CT[m],TAT[m],WT[m],processor[i];
+	printf("Process number  \n ");
+	for(i=0;i<m;i++){
+	scanf("%d",&processor[i]);
+}
+printf("Enter the Arivial Time\n ");
+for(i=0;i<m;i++)
+{
+	scanf("%d",&AT[i]);
+}
+printf("Enter the Burst Time :\n");
+for(i=0;i<m;i++)
+{
+	scanf("%d",&BT[i]);
+}
+CT[0]=BT[0]+AT[0];
+for(i=1;i<m;i++)
+{
+	if (AT[i]>BT[i])
+	{
+		CT[i]=AT[i]+BT[i];
+	}
+	else
+	{
+		CT[i]=BT[i]+CT[i-1];
+	}
+}
+for(i=0;i<m;i++)
+{
+	TAT[i]=CT[i]-AT[i];
+}
+for(i=0;i<m;i++)
+{
+	WT[i]=TAT[i]-BT[i];
+}
+printf("  AT  BT  CT  TAT  WT\n ");
+for(i=0;i<m;i++)
+{
+	printf("%d   %d   %d   %d   %d   %d\n",processor[i],AT[i],BT[i],CT[i],TAT[i],WT[i]);
+}
+for(i=0;i<m;i++)
+{
+	avg1=avg1+TAT[i];
+}
+for(i=0;i<m;i++)
+{
+	avg2=avg2+WT[i];
+}
+printf("\n Average Turn around time :%f\n",avg1/m);
+printf("Average Waiting time :%f\n",avg2/m);
+return 0;
+}
